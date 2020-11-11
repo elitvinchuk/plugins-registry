@@ -1,6 +1,6 @@
 {
   "name": "@elitvinchuk/plugins-second",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "dist/remoteEntry.js",
   "scripts": {
