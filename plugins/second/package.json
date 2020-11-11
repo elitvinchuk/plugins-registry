@@ -1,6 +1,13 @@
 {
-  "name": "@elitvinchuk/second-plugin",
-  "version": "0.0.1",
+  "name": "@elitvinchuk/plugins-second",
+  "version": "0.0.4",
+  "license": "MIT",
+  "main": "dist/remoteEntry.js",
+  "scripts": {
+    "analyze": "webpack --config webpack.analyze.js",
+    "build": "webpack --mode production",
+    "prepublish": "yarn build"
+  },
   "publishConfig": {
     "access": "public"
   }
