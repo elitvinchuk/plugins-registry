@@ -10,7 +10,7 @@ export default function Widget() {
         color: 'white',
       }}
     >
-      <h2>App 2 Widget</h2>
+      <h2>App 1 Widget</h2>
       {/*<p>App2 Moment Dep: {moment().format('MMMM Do YYYY, h:mm:ss a')}</p>*/}
     </div>
   )
