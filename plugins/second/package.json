@@ -1,12 +1,16 @@
 {
   "name": "@elitvinchuk/plugins-second",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "main": "dist/remoteEntry.js",
   "scripts": {
     "analyze": "webpack --config webpack.analyze.js",
     "build": "webpack --mode production",
     "prepublish": "yarn build"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "publishConfig": {
     "access": "public"
