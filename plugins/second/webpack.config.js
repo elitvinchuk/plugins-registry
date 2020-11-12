@@ -13,15 +13,14 @@ const pluginConfig = merge(commonConfig, {
       exposes: {
         './Plugin': './src/Plugin',
       },
-      shared: [
-        {
-          react: { singleton: true, requiredVersion: dependencies.react },
-          'react-dom': {
-            singleton: true,
-            requiredVersion: dependencies['react-dom'],
-          },
+      shared: {
+        ...dependencies,
+        react: { singleton: true, requiredVersion: dependencies.react },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-dom'],
         },
-      ],
+      },
     }),
   ],
 })

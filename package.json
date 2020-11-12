@@ -8,7 +8,6 @@
     "sendToNPM": "lerna publish --scope @elitvinchuk/plugins-*"
   },
   "workspaces": [
-    "cli",
     "container",
     "plugins/*"
   ],
