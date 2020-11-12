@@ -1,21 +1,33 @@
-const path = require("path");
+const HTMLPlugin = require('html-webpack-plugin')
+const path = require('path')
 
-module.exports = {
-  entry: "./index",
+module.exports = here => ({
+  entry: './src/index',
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(here, 'dist'),
   },
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-react"],
+            presets: ['@babel/preset-react'],
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
-};
+  plugins: [
+    new HTMLPlugin({
+      template: './src/index.html',
+    }),
+  ],
+  devtool: 'inline-source-map',
+})

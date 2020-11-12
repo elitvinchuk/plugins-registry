@@ -1,11 +1,15 @@
 import React from 'react'
 
-import LocalButton from './Widget'
+import Plugin from './Plugin'
+
+const data = {
+  first: 'specific data for the first plugin',
+  center: [-0.481747846041145, 51.3233379650232],
+}
 
 export const App = () => (
   <div>
-    <h1>Dynamic System Host</h1>
-    <h2>App 2</h2>
-    <LocalButton />
+    <h1>Container for the first plugin</h1>
+    <Plugin {...data} />
   </div>
 )

@@ -1,25 +1,28 @@
 const ModuleFederationPlugin = require('webpack').container
   .ModuleFederationPlugin
 const { merge } = require('webpack-merge')
+const { dependencies } = require('./package.json')
 
 const commonConfig = require('../../webpack.common')(__dirname)
 
-const containerConfig = merge(commonConfig, {
+const pluginConfig = merge(commonConfig, {
   plugins: [
     new ModuleFederationPlugin({
       name: 'plugin',
       filename: 'remoteEntry.js',
       exposes: {
-        './Widget': './src/Widget',
+        './Plugin': './src/Plugin',
       },
-      shared: [
-        {
-          react: { singleton: true },
-          'react-dom': { singleton: true },
+      shared: {
+        ...dependencies,
+        react: { singleton: true, requiredVersion: dependencies.react },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-dom'],
         },
-      ],
+      },
     }),
   ],
 })
 
-module.exports = containerConfig
+module.exports = pluginConfig

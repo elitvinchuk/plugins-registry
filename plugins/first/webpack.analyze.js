@@ -5,7 +5,12 @@ const { merge } = require('webpack-merge')
 const containerConfig = require('./webpack.config')
 
 const analyzerConfig = merge(containerConfig, {
-  plugins: [new BundleAnalyzerPlugin()],
+  mode: 'production',
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8001,
+    }),
+  ],
 })
 
 module.exports = analyzerConfig

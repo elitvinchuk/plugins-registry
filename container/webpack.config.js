@@ -1,40 +1,25 @@
-/*
-const HTMLPlugin = require('html-webpack-plugin')
-const merge = require('webpack-merge')
+const ModuleFederationPlugin = require('webpack').container
+  .ModuleFederationPlugin
+const { merge } = require('webpack-merge')
 
-const commonConfig = require('../webpack.common')
+const { dependencies } = require('./package.json')
+const commonConfig = require('../webpack.common')(__dirname)
 
 const containerConfig = merge(commonConfig, {
-    plugins: [
-        new HTMLPlugin({
-            template: './src/index.html'
-        })
-    ]
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'container',
+      filename: 'remoteEntry.js',
+      shared: {
+        ...dependencies,
+        react: { singleton: true, requiredVersion: dependencies.react },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: dependencies['react-dom'],
+        },
+      },
+    }),
+  ],
 })
 
-console.log(containerConfig)
-
 module.exports = containerConfig
-*/
-const path = require("path");
-
-module.exports = {
-    entry: "./index",
-    output: {
-        path: path.resolve(__dirname, "dist"),
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx$/,
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-react"],
-                    },
-                },
-            },
-        ],
-    },
-    devtool: "inline-source-map"
-};
