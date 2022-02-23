@@ -30,4 +30,7 @@ module.exports = here => ({
     }),
   ],
   devtool: 'inline-source-map',
+  devServer: {
+    port: 8888,
+  },
 })

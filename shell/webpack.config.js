@@ -1,5 +1,5 @@
-const ModuleFederationPlugin = require('webpack').container
-  .ModuleFederationPlugin
+const { ModuleFederationPlugin } = require('webpack').container
+
 const { merge } = require('webpack-merge')
 
 const { dependencies } = require('./package.json')
@@ -9,13 +9,21 @@ const containerConfig = merge(commonConfig, {
   plugins: [
     new ModuleFederationPlugin({
       name: 'container',
-      filename: 'remoteEntry.js',
       shared: {
         ...dependencies,
-        react: { singleton: true, requiredVersion: dependencies.react },
-        'react-dom': {
+        react: {
+          eager: true,
           singleton: true,
-          requiredVersion: dependencies['react-dom'],
+          requiredVersion: dependencies.react,
+        },
+        'react-dom': {
+          eager: true,
+          requiredVersion: dependencies.react,
+        },
+        '@plugins/context': {
+          eager: true,
+          singleton: true,
+          requiredVersion: dependencies['@plugins/context'],
         },
       },
     }),

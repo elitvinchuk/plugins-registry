@@ -1,21 +1,20 @@
 {
-  "name": "@elitvinchuk/plugins-second",
+  "name": "@plugins/second",
   "version": "0.1.1",
   "license": "MIT",
   "main": "dist/remoteEntry.js",
   "scripts": {
-    "analyze": "webpack --config webpack.analyze.js",
+    "analyze": "NODE_ENV=production webpack --mode production --analyze",
     "build": "webpack --mode production",
     "prepublish": "yarn build",
     "start": "webpack serve"
   },
   "dependencies": {
+    "@plugins/context": "*",
     "mapbox-gl": "^1.12.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "react-mapbox-gl": "^5.0.0"
   },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "react": "*"
   }
 }

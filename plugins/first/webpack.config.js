@@ -1,5 +1,4 @@
-const ModuleFederationPlugin = require('webpack').container
-  .ModuleFederationPlugin
+const { ModuleFederationPlugin } = require('webpack').container
 const { merge } = require('webpack-merge')
 
 const { dependencies } = require('./package.json')
@@ -16,13 +15,16 @@ const pluginConfig = merge(commonConfig, {
       shared: {
         ...dependencies,
         react: { singleton: true, requiredVersion: dependencies.react },
-        'react-dom': {
+        '@plugins/context': {
           singleton: true,
-          requiredVersion: dependencies['react-dom'],
+          requiredVersion: dependencies['@plugins/context'],
         },
       },
     }),
   ],
+  devServer: {
+    port: 8881,
+  },
 })
 
 module.exports = pluginConfig

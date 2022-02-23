@@ -1,0 +1,23 @@
+{
+  "name": "@plugins/shell",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "analyze": "NODE_ENV=production webpack --mode production --analyze",
+    "start": "webpack serve",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@plugins/context": "*"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^3.11.3"
+  }
+}

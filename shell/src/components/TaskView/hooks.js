@@ -1,8 +1,13 @@
 import React, { lazy, useEffect, useState } from 'react'
 
-const getPluginUrl = plugin =>
-  `https://unpkg.com/@elitvinchuk/${plugin}/dist/remoteEntry.js`
+const pluginMap = {
+  first: 'http://localhost:8881/remoteEntry.js',
+  second: 'http://localhost:8882/remoteEntry.js',
+}
 
+const getPluginUrl = plugin => pluginMap[plugin]
+
+// todo: use constants
 const scope = 'plugin'
 const module = './Plugin'
 
